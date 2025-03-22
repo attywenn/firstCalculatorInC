@@ -1,47 +1,73 @@
 #include <stdio.h>
-#include <string.h>
 
-int main() {
-    char mainPw[20];
-    char key[20];
-    char yesno;
+double a, b;
+int value;
+double mathAdd (double a, double b);
+double mathSubtract (double a, double b);
+double mathMultiply (double a, double b);
+double mathDivide (double a, double b);
+int mathIntDivide (int a, int b);
+int mathRemainder (int a, int b);
 
-    printf("===== Welcome to my program! ======\n");
-    printf("== Developed by: Wency (Computer Science Department - EARIST Manila) ==\n");
+int main () {
+	char choice;
+	
+	a = 5;
+	b = 10;
+	value = a, b;
 
-    do {
-        printf("\nType your password: ");
-        scanf("%s", mainPw);
+		do {
+			printf("Input first number: ");
+			scanf(" %lf", &a);
+			printf("Input second number: ");
+			scanf(" %lf", &b);
+			
+			printf("Pick your operator (+, -, *, /): ");
+			scanf(" %c", &choice);
 
-        if (strcmp(mainPw, "attywenn") != 0) {
-            printf("Invalid. Please try again.\n");
-        }
-    } while (strcmp(mainPw, "attywenn") != 0);
-
-    printf("Welcome!\n");
-    printf("This is another security checkpoint.\n");
-
-    printf("Would you still proceed? (y/n): ");
-    scanf(" %c", &yesno);  // Using %c for a single character
-
-    if (yesno == 'y') {  
-        printf("Go, proceed.\n");
-    } else if (yesno == 'n') {
-        printf("Thanks. Get out of here.\n");
-        return 0;
-    } else {
-        printf("Invalid input.\n");
-        return 0;
-    }
-
-    for (int i = 0; i < 10; i++) {
-        printf("[System] Waiting code %d\n", i);
-    }
-
-    printf("Thank you for waiting, this is another security checkpoint:\n");
-    printf("Please type your secondary privacy key: ");
-    scanf("%s", key);
-
-    return 0;
+			switch (choice) {
+				case '+':
+					printf("Value: %.2lf\n", mathAdd(a, b));
+					mathAdd(a, b);
+					break;
+				case '-':
+					printf("Value: %.2lf\n", mathSubtract(a,b));
+					mathSubtract(a, b);
+					break;
+				case '*':
+					printf("Value: %.2lf\n", mathMultiply(a, b));
+					mathMultiply(a, b);
+					break;
+				case '/':
+					printf("Value: %.2lf\vValue: %d r. %d\n", mathDivide(a, b), mathIntDivide(a, b), mathRemainder(a, b));
+					mathDivide(a, b);
+					mathRemainder(a, b);
+					break;
+			} 
+		} while (choice != '+' && '-' && '*' && '/');
+	return 0;	
 }
 
+double mathAdd (double a, double b) {
+	return a + b;
+}
+
+double mathSubtract (double a, double b) {
+	return a - b;
+}
+
+double mathMultiply (double a, double b) {
+	return a * b;
+}
+
+double mathDivide (double a, double b) {
+	return a / b;
+}
+
+int mathRemainder (int a, int b) {
+	return a % b;
+}
+
+int mathIntDivide (int a, int b) {
+	return a / b;
+}
